@@ -1,16 +1,18 @@
-package com.clinic.dentum.constan;
+package com.clinic.dentum.constant;
 
 public class EndPoints {
 
+    private EndPoints() {
+        throw new IllegalStateException("this class cannot be instantiated because it collects static members");
+    }
+
     // end point for pacient
-    public static final String CREATE_PACIENT = "/register/pacient";
     public static final String FIND_ALL_PACIENTS = "/pacients";
-    public static final String FIND_PACIENT = "/pacient";
+    public static final String FIND_PACIENT = "/{dni}";
     public static final String UPDATE_PACIENT = "/update/pacient/{id}";
-    public static final String DELETE_PACIENT = "/pacient/{id}";
+    public static final String DELETE_PACIENT = "/{dni}";
 
     // end point for
-    public static final String CREATE_DENTIST = "/register/dentist";
     public static final String FIND_ALL_DENTISTS = "/dentists";
     public static final String FIND_DENTIST = "/dentist";
     public static final String UPDATE_DENTIST = "/update/dentist/{id}";

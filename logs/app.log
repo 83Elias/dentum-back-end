@@ -1,0 +1,2 @@
+2022-06-25 21:41:34,313 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-2] Column 'discharge_date' cannot be null
+2022-06-25 21:41:34,340 ERROR c.c.d.s.PacientService [http-nio-8080-exec-2] org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement

@@ -1,66 +1,50 @@
 package com.clinic.dentum.model;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-public class Address {
-    
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@Entity
+@Table(name = "address")
+public class Address implements Serializable{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
     @Column(length = 150)
     private String street;
 
+    @NotNull
     @Column(length = 20)
     private String number;
 
+    @NotNull
     @Column(length = 100)
     private String location;
 
+    @NotNull
     @Column(length = 60)
     private String provincie;
 
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getStreet() {
-        return this.street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getNumber() {
-        return this.number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getLocation() {
-        return this.location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getProvincie() {
-        return this.provincie;
-    }
-
-    public void setProvincie(String provincie) {
-        this.provincie = provincie;
-    }
+    @OneToOne(mappedBy = "address",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Pacient pacient;
 
 }
