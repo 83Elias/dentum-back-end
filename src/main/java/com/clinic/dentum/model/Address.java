@@ -2,7 +2,7 @@ package com.clinic.dentum.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,7 +43,7 @@ public class Address implements Serializable{
     @Column(length = 60)
     private String provincie;
 
-    @OneToOne(mappedBy = "address",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "address")
     @JsonIgnore
     private Pacient pacient;
 

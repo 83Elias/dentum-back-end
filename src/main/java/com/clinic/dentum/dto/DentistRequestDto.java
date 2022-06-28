@@ -1,7 +1,5 @@
 package com.clinic.dentum.dto;
 
-import java.time.LocalDate;
-
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,7 +8,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PacientRequestDto {
+public class DentistRequestDto {
 
     @NotBlank
     private String name;
@@ -19,7 +17,5 @@ public class PacientRequestDto {
     private String lastname;
 
     @NotBlank
-    private String dni;
-    
-    private LocalDate dischargeDate;
+    private String enrollment;
 }

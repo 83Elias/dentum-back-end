@@ -84,7 +84,6 @@ public class PacientService {
              Pacient updatePacient=pacientRepository.findByDni(infoPacient.getDni());
              updatePacient.setName(pacientRequestDto.getName());
              updatePacient.setLastname(pacientRequestDto.getLastname());
-             
              return pacientRepository.save(updatePacient);
              
         } catch (Exception e) {

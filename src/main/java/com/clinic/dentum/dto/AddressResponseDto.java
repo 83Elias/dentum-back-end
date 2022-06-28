@@ -6,7 +6,9 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AddressDto {
+public class AddressResponseDto {
+
+    private Long id;
 
     private String street;
 
