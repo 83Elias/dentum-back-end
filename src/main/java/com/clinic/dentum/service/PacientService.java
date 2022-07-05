@@ -31,7 +31,6 @@ public class PacientService {
             logger.info("creating pacient with dni {}", pacientRequestDto.getDni());
 
             Pacient pacient = mapper.convertValue(pacientRequestDto, Pacient.class);
-
             pacientRepository.save(pacient);
             return pacient;
 
@@ -45,8 +44,7 @@ public class PacientService {
 
         try {
             logger.info("find pacient with dni {}", dni);
-
-            return mapper.convertValue(pacientRepository.findByDni(dni), PacientResponseDto.class);
+             return mapper.convertValue(pacientRepository.findByDni(dni), PacientResponseDto.class); 
         } catch (Exception e) {
             logger.error(e);
         }

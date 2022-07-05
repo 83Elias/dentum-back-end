@@ -16,7 +16,11 @@ public class EndPoints {
     public static final String FIND_DENTIST = "/{enrollment}";
     public static final String DELETE_DENTIST = "/{enrollment}";
     
+    // end point for address
     public static final String DELETE_ADDRESS="/{dni}";
     public static final String FIND_ADDRESS="/{dni}";
 
+    //end point for turn
+    public static final String FIND_TURN_PACIENT="/{dni}";
+    public static final String FIND_TURN_DENTIST="/{enrollment}";
 }

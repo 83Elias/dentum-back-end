@@ -2,7 +2,6 @@ package com.clinic.dentum.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,12 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +24,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "pacient")
 public class Pacient implements Serializable {
 
+    private static final long serialVersionUID = 6146705628976841832L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -49,9 +47,5 @@ public class Pacient implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
-
-    @OneToMany(mappedBy = "pacient")
-    @JsonIgnore
-    Set<TurnPacientWithDentist> turnPacientWithDentist;
 
 }

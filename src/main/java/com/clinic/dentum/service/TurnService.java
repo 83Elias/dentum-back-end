@@ -1,5 +1,9 @@
 package com.clinic.dentum.service;
 
+
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,50 +23,94 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class TurnService {
 
-    private static final Logger logger = LogManager.getLogger(DentistService.class);
+   private static final Logger logger = LogManager.getLogger(TurnService.class);
 
-    @Autowired
-    private TurnRepository turnRepository;
+   @Autowired
+   private TurnRepository turnRepository;
 
-    @Autowired 
-    private PacientRepository pacientRepository;
-    
-    @Autowired
-    private DentistRepository dentistRepository;
+   @Autowired
+   private PacientRepository pacientRepository;
 
-    @Autowired
-    private BusinessUtil businessUtil;
+   @Autowired
+   private DentistRepository dentistRepository;
 
-    @Autowired
-    private ObjectMapper mapper;
+   @Autowired
+   private BusinessUtil businessUtil;
+
+   @Autowired
+   private ObjectMapper mapper;
+
+   public TurnPacientWithDentist getTurnRegistered(TurnRequestDto turnRequestDto) {
+
+      try {
+
+         logger.info("creating turn for pacient with dni [{}] to dentist with enrollment [{}]",
+               turnRequestDto.getDniPacient(), turnRequestDto.getEnrollmentDentist());
+
+         Pacient currentPacient = pacientRepository.findByDni(turnRequestDto.getDniPacient());
+         Dentist currentDentist = dentistRepository.findByEnrollment(turnRequestDto.getEnrollmentDentist());
+         TurnPacientWithDentist turnPacientWithDentist = mapper.convertValue(turnRequestDto,
+               TurnPacientWithDentist.class);
+
+         turnPacientWithDentist
+               .setShiftDate(businessUtil.parseStringToLocalDateTime(turnRequestDto.getShiftDateTurn()));
+         turnPacientWithDentist.setPacient(currentPacient);
+         turnPacientWithDentist.setDentist(currentDentist);
+         return turnRepository.save(turnPacientWithDentist);
+
+      } catch (Exception e) {
+         logger.error(e);
+      }
+
+      return null;
+   }
 
 
- 
-    public TurnPacientWithDentist getTurnRegistered(TurnRequestDto turnRequestDto){
-    
+
+   public  List<TurnResponseDto> findTurn(String dni, String enrollment){
+       logger.info("dni {} and enrollment {}",dni,enrollment);
+
+       if (enrollment!=null) {
+         return getTurnByDentist(enrollment);
+      }
+
+      if (dni!=null) {
+         return getTurnByPacient(dni);
+      }
+
       
-         try {
+        
+      return Collections.emptyList();
+   }
 
-            logger.info("creating turn for pacient with dni [{}] to dentist with enrollment [{}]",turnRequestDto.getDniPacient(),turnRequestDto.getEnrollmentDentist());
-           
+   public List<TurnResponseDto> getTurnByPacient(String dni) {
 
-            Pacient currentPacient= pacientRepository.findByDni(turnRequestDto.getDniPacient());
-            Dentist currentDentist= dentistRepository.findByEnrollment(turnRequestDto.getEnrollmentDentist());
-            TurnPacientWithDentist turnPacientWithDentist=mapper.convertValue(turnRequestDto, TurnPacientWithDentist.class);
+      try {
 
-            turnPacientWithDentist.setShiftDate(businessUtil.parseStringToLocalDateTime(turnRequestDto.getShiftDateTurn()));
-            turnPacientWithDentist.setPacient(currentPacient);
-            turnPacientWithDentist.setDentist(currentDentist);
-            return turnRepository.save(turnPacientWithDentist);
+         logger.info("find turn for pacient with dni [{}]", dni);
+         Pacient pacient = pacientRepository.findByDni(dni);
 
-              
-         } catch (Exception e) {
-            logger.error(e);
-         }
+         return turnRepository.getTurnByIdPacient(pacient.getId());
+      } catch (Exception e) {
+         logger.error(e);
+      }
 
-        return null;
-    }
+      return Collections.emptyList();
+   }
 
+   public List<TurnResponseDto> getTurnByDentist(String enrollment) {
 
-    
+      try {
+
+         logger.info("find turn for dentist with dni [{}]", enrollment);
+         Dentist dentist = dentistRepository.findByEnrollment(enrollment);
+
+         return turnRepository.getTurnByIdDentist(dentist.getId());
+      } catch (Exception e) {
+         logger.error(e);
+      }
+
+      return Collections.emptyList();
+   }
+
 }

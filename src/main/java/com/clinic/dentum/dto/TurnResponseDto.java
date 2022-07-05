@@ -1,21 +1,31 @@
 package com.clinic.dentum.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class TurnResponseDto {
 
     private Long id;
 
-    private PacientResponseDto pacientResponseDto;
+    private String nameDentist;
 
-    private DentistResponseDto dentistResponseDto;
+    private String lastnameDentist;
+
+    private String enrollment;
+
+    private String namePacient;
+
+    private String lastnamePacient;
+
+    private String dni;
+
+    private String dischargeDate;
 
     private String shiftDate;
 
-    private String status;
 
 }
