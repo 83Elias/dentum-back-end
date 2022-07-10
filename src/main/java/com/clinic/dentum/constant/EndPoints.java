@@ -23,4 +23,11 @@ public class EndPoints {
     //end point for turn
     public static final String FIND_TURN_PACIENT="/{dni}";
     public static final String FIND_TURN_DENTIST="/{enrollment}";
+
+
+    public static final String LOGIN="/login";
+    public static final String REGISTER="/register";
+    public static final String UPDATE_USER="/update";
+    public static final String DELETE_USER="/delete";
+
 }
