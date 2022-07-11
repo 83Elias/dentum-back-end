@@ -30,20 +30,27 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.tokenStore(tokenStoreResource());
     }
-    
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/oauth/**").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/oauth/**", "/v2/api-docs", "/configuration/ui", "/swagger-resources/**",
+                        "/configuration/security", "/swagger-ui.html", "/webjars/**")
+                .permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/dentist/dentists", "/api/v1/pacient/pacients").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/pacient/{dni}", "/api/v1/dentist/{enrollment}",
-                        "/api/v1/address/{dni}", "/api/v1/turn/{id}").hasAnyRole("USER", "ADMIN")
+                        "/api/v1/address/{dni}", "/api/v1/turn/{id}")
+                .hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/v1/customer/register").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/dentist").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST,"/api/v1/pacient", "/api/v1/address","/api/v1/turn").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.PUT, "/api/v1/dentist", "/api/v1/pacient","api/v1/turn").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/api/v1/address","/api/v1/customer/update/{id}").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/v1/pacient", "/api/v1/address", "/api/v1/turn")
+                .hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/v1/dentist", "/api/v1/pacient", "api/v1/turn").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/v1/address", "/api/v1/customer/update/{id}")
+                .hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/api/v1/dentist/{enrollment}", "/api/v1/pacient/{dni}",
-                        "/api/v1/address/{dni}", "/api/v1/customer/delete/{id}","/api/v1/turn/{id}").hasRole("ADMIN")
+                        "/api/v1/address/{dni}", "/api/v1/customer/delete/{id}", "/api/v1/turn/{id}")
+                .hasRole("ADMIN")
                 .anyRequest().authenticated();
 
     }
