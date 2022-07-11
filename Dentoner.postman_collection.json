@@ -1,0 +1,673 @@
+{
+	"info": {
+		"_postman_id": "3c44b75a-54de-42da-a691-4ed634bcc5e1",
+		"name": "Dentoner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14081882"
+	},
+	"item": [
+		{
+			"name": "Pacient",
+			"item": [
+				{
+					"name": "Register Pacient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"celia\",\r\n    \"lastname\": \"hanzen\",\r\n    \"dni\": \"68885567\",\r\n    \"dischargeDate\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/pacient",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download List Pacients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pacient/pacients",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacient",
+								"pacients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Pacient By DNI",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pacient/68885567",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacient",
+								"68885567"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Pacient Properties",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"maria\",\r\n    \"lastname\": \"Rodriguez\",\r\n    \"dni\": \"5677557\",\r\n    \"dischargeDate\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/pacient",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Pacient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pacient/68885567",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pacient",
+								"68885567"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dentist",
+			"item": [
+				{
+					"name": "Register Dentist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maria\",\r\n    \"lastname\": \"Sabaleta\",\r\n    \"enrollment\": \"499823\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/dentist",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"dentist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Dentist By Enrollment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/dentist/499823",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"dentist",
+								"499823"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download List Dentist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/dentist/dentists",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"dentist",
+								"dentists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Dentist",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Alex\",\r\n    \"lastname\":\"cepeda\",\r\n    \"enrollment\":\"499823\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/dentist",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"dentist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Dentist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/dentist/499823",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"dentist",
+								"499823"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Register Pacient Address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\":\"cra 51 34\",\r\n    \"number\":\"34\",\r\n    \"location\":\"kennedy\",\r\n    \"provincie\":\"cundinamarca\",\r\n    \"dni\":\"68885567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/address",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Address By DNI Pacient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/address/68885567",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"address",
+								"68885567"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address at Pacien by DNI ",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\":\"cra 52 56\",\r\n    \"number\":\"56\",\r\n    \"location\":\"Suba\",\r\n    \"provincie\":\"cundinamarca\",\r\n    \"dni\":\"68885567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/address",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove ADDRESS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/address/68885567",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"address",
+								"68885567"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Turn",
+			"item": [
+				{
+					"name": "create Turn pacient",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJjZWxpczIzMiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NTc1MTQ2NTQsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIxNDlhZTU4Zi1hMTU5LTQwYjMtYjFhMC02M2U2ZmYwMGEyYWQiLCJkbmkiOiI2ODg4NTU2NyIsImVuYWJsZWQiOnRydWUsImNsaWVudF9pZCI6InBvc3RtYW4ifQ.S35pmXLLk9MCGehXYBzlylba5FgAHY2fL0b0fKnDQEk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dniPacient\":\"348856\",\r\n    \"enrollmentDentist\":\"6899776\",\r\n    \"shiftDateTurn\":\"2022-07-10 14:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/turn",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"turn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find turn",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJjZWxpczIzMiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NTc1MTQ2NTQsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIxNDlhZTU4Zi1hMTU5LTQwYjMtYjFhMC02M2U2ZmYwMGEyYWQiLCJkbmkiOiI2ODg4NTU2NyIsImVuYWJsZWQiOnRydWUsImNsaWVudF9pZCI6InBvc3RtYW4ifQ.S35pmXLLk9MCGehXYBzlylba5FgAHY2fL0b0fKnDQEk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/turn/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"turn",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE TURN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJjZWxpczIzMiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NTc1MTQ2NTQsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIxNDlhZTU4Zi1hMTU5LTQwYjMtYjFhMC02M2U2ZmYwMGEyYWQiLCJkbmkiOiI2ODg4NTU2NyIsImVuYWJsZWQiOnRydWUsImNsaWVudF9pZCI6InBvc3RtYW4ifQ.S35pmXLLk9MCGehXYBzlylba5FgAHY2fL0b0fKnDQEk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/turn/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"turn",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE TURN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJjZWxpczIzMiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NTc1MTQ2NTQsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIxNDlhZTU4Zi1hMTU5LTQwYjMtYjFhMC02M2U2ZmYwMGEyYWQiLCJkbmkiOiI2ODg4NTU2NyIsImVuYWJsZWQiOnRydWUsImNsaWVudF9pZCI6InBvc3RtYW4ifQ.S35pmXLLk9MCGehXYBzlylba5FgAHY2fL0b0fKnDQEk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dniPacient\": \"348856\",\r\n    \"enrollmentDentist\": \"6899776\",\r\n    \"shiftDateTurn\": \"2022-07-10 16:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/turn",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"turn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "postman",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "postman1934",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "celis232",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Celis_CDMX232",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/oauth/token",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"celis232\",\r\n    \"password\": \"Celis_CDMX232\",\r\n    \"dni\": \"68885567\",\r\n    \"roles\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"ROLE_ADMIN\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJjZWxpczIzMiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NTc1MTY2NTcsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIyOWM1YjZjNi1iOTRlLTQ1ZTAtODQzZS1jZjdkZTllNjRlYTAiLCJkbmkiOiI2ODg4NTU2NyIsImVuYWJsZWQiOnRydWUsImNsaWVudF9pZCI6InBvc3RtYW4ifQ.o8-NgYR_NY7R5Y8khbN14IUkXzvIIg9njOLK_4l-J6c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"devElias\",\r\n    \"password\": \"Gamergy83\",\r\n    \"dni\": \"11111111\",\r\n    \"enabled\":true,\r\n    \"roles\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"ROLE_USER\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJjZWxpczIzMiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2NTc1MTc1MjYsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIxNWFkNTJjYS03ZDc1LTRhZmQtODFhMy1hYTQ3YzQyZTliMzUiLCJkbmkiOiI2ODg4NTU2NyIsImVuYWJsZWQiOnRydWUsImNsaWVudF9pZCI6InBvc3RtYW4ifQ.j611T4jkZPcg76QF1UJx1LuQ8YXhFndLyu0aU0wxHSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/delete/68885567",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"delete",
+								"68885567"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
