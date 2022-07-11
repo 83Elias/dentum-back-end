@@ -1,31 +1,31 @@
 package com.clinic.dentum.dto;
 
-import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.clinic.dentum.model.Role;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserRequestDto {
+public class UpdateTurnDto {
 
     @NotNull
-    private String username;
-    
-    @NotNull
-    private String password;
-
-    private Boolean enabled = true;
+    private Long id;
 
     @NotNull
-    private String dni;
+    private String dniPacient;
 
     @NotNull
-    private List<Role> roles;
+    private String enrollmentDentist;
+
+    @NotNull
+    private String shiftDateTurn;
+
+    @NotNull
+    private String status;
+
 
 }

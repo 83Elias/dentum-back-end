@@ -21,13 +21,14 @@ public class EndPoints {
     public static final String FIND_ADDRESS="/{dni}";
 
     //end point for turn
-    public static final String FIND_TURN_PACIENT="/{dni}";
-    public static final String FIND_TURN_DENTIST="/{enrollment}";
+    public static final String FIND_TURN="/{id}";
+    public static final String DELETE_TURN="/{id}";
+
 
 
     public static final String LOGIN="/login";
     public static final String REGISTER="/register";
     public static final String UPDATE_USER="/update";
-    public static final String DELETE_USER="/delete";
+    public static final String DELETE_USER="/delete/{dni}";
 
 }

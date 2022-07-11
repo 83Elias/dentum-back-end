@@ -23,8 +23,6 @@ public class TurnResponseDto {
 
     private String dni;
 
-    private String dischargeDate;
-
     private String shiftDate;
 
 

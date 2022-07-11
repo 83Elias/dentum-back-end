@@ -13,10 +13,6 @@ import com.clinic.dentum.model.TurnPacientWithDentist;
 @Repository
 public interface TurnRepository extends JpaRepository<TurnPacientWithDentist, Long> {
 
-    
-    @Query(name = "findTurnPacients", nativeQuery = true)
-    public List<TurnResponseDto> getTurnByIdPacient(@Param("id") Long id);
-
-    @Query(name = "findTurnDentist", nativeQuery = true)
-    public List<TurnResponseDto> getTurnByIdDentist(@Param("id") Long id);
+    @Query(name = "findTurn", nativeQuery = true)
+    public TurnResponseDto findTurnById(@Param("id") Long id);
 }

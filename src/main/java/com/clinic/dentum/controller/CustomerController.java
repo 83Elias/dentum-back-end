@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("api/v1/auth")
-public class AuthController {
+@RequestMapping("api/v1/customer")
+public class CustomerController {
 
     @Autowired
     private AuthService authService;
@@ -32,12 +33,6 @@ public class AuthController {
         return authService.register(userRequestDto);
     }
 
-    @GetMapping(EndPoints.LOGIN)
-    public UserResponseDto login(@RequestParam(required = true) String username) {
-
-        return authService.login(username);
-    }
-
     @PutMapping(EndPoints.UPDATE_USER)
     public Customer updateUser(@RequestBody UserRequestDto userRequestDto) {
         return authService.updateUser(userRequestDto);
@@ -45,7 +40,7 @@ public class AuthController {
 
     @Transactional
     @DeleteMapping(EndPoints.DELETE_USER)
-    public String deleteUser(@RequestParam(required = true) String dni){
+    public String deleteUser(@PathVariable String dni){
          
         return authService.deleteUser(dni);
     }

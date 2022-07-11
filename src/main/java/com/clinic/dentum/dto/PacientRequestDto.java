@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
 
+import com.clinic.dentum.model.Address;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -22,4 +23,6 @@ public class PacientRequestDto {
     private String dni;
     
     private LocalDate dischargeDate;
+
+    private Address address;
 }

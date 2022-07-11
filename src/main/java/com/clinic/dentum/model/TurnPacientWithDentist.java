@@ -11,45 +11,24 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
-
+import javax.persistence.JoinColumn;
 import com.clinic.dentum.dto.TurnResponseDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NamedNativeQuery(name="findTurnPacients",
+@NamedNativeQuery(name="findTurn",
 query="SELECT s.id,d.name as nameDentist,d.lastname as lastnameDentist,d.enrollment,p.name as namePacient,p.lastname as lastnamePacient,p.dni,p.discharge_date as dischargeDate,s.shift_date as shiftDate FROM shift_pacient_dentist s "+
-"LEFT JOIN pacient p on s.id_dentist=p.id "+
-"LEFT JOIN dentist d on s.id_pacient=d.id "+
-"WHERE s.id_pacient=:id",
-resultSetMapping = "Mapping.TurnResponseDto"
-)
-@SqlResultSetMapping(
-    name="Mapping.TurnResponseDto",
-    classes = @ConstructorResult(targetClass = TurnResponseDto.class,
-    columns ={
-        @ColumnResult(name = "id",type = Long.class),
-        @ColumnResult(name = "nameDentist",type = String.class),
-        @ColumnResult(name = "lastnameDentist",type = String.class),
-        @ColumnResult(name = "enrollment",type = String.class),
-        @ColumnResult(name = "namePacient",type = String.class),
-        @ColumnResult(name = "lastnamePacient",type = String.class),
-        @ColumnResult(name = "dni",type = String.class),
-        @ColumnResult(name = "dischargeDate",type = String.class),
-        @ColumnResult(name = "shiftDate",type = String.class),
-    })
-)
-
-@NamedNativeQuery(name="findTurnDentist",
-query="SELECT s.id,d.name as nameDentist,d.lastname as lastnameDentist,d.enrollment,p.name as namePacient,p.lastname as lastnamePacient,p.dni,p.discharge_date as dischargeDate,s.shift_date as shiftDate FROM shift_pacient_dentist s "+
-"LEFT JOIN pacient p on s.id_dentist=p.id "+
-"LEFT JOIN dentist d on s.id_pacient=d.id "+
-"WHERE s.id_dentist=:id",
+"LEFT JOIN pacient p on s.pacient_id=p.id "+
+"LEFT JOIN dentist d on s.dentist_id=d.id "+
+"WHERE s.id=:id",
 resultSetMapping = "Mapping.TurnResponseDtoDentist"
 )
 @SqlResultSetMapping(
@@ -63,7 +42,6 @@ resultSetMapping = "Mapping.TurnResponseDtoDentist"
         @ColumnResult(name = "namePacient",type = String.class),
         @ColumnResult(name = "lastnamePacient",type = String.class),
         @ColumnResult(name = "dni",type = String.class),
-        @ColumnResult(name = "dischargeDate",type = String.class),
         @ColumnResult(name = "shiftDate",type = String.class),
     })
 )
@@ -81,14 +59,16 @@ public class TurnPacientWithDentist implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_pacient", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name ="pacient_id")
+    @JsonBackReference("pacientReference")
     private Pacient pacient;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_dentist", referencedColumnName = "id")
+    @ManyToOne
+    @JsonBackReference("dentistReference")
+    @JoinColumn(name ="dentist_id")
     private Dentist dentist;
-
+    
     @Column(name = "shift_date")
     private LocalDateTime shiftDate;
 

@@ -74,6 +74,8 @@ public class AuthService {
 
                     user.setUsername(userRequestDto.getUsername());
                     user.setPassword(userRequestDto.getPassword());
+                    user.setRoles(userRequestDto.getRoles());
+                    user.setEnabled(userRequestDto.getEnabled());
 
                     return userRepository.save(user);
                 }
